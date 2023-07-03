@@ -8,3 +8,5 @@ Thanks for the help and motivation.
 Thanks and Regards
 John from Kottayam. 
 
+cat helm.bash_aliases >> # add to  #   ~/.bash_alias it will work. 
+
