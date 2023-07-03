@@ -80,13 +80,9 @@ HHHI() {
 	kubectl create namespace kb
 	helm install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard  -n kb
 	sleep 9
-	echo -e "  kubectl get pods --all-namespaces  \n\n"
-	kubectl 	get pods 	--all-namespaces
-	kubectl  	get service 	--all-namespaces
-	kubectl 	get deployments --all-namespaces
 	export KPOD_NAME=$(kubectl get pods -n kb -l "app.kubernetes.io/name=kubernetes-dashboard,app.kubernetes.io/instance=kubernetes-dashboard" -o jsonpath="{.items[0].metadata.name}")
 	echo https://127.0.0.1:8443/
-	kubectl -n default port-forward $KPOD_NAME 8443:8443 & 
+	kubectl -n kb  port-forward $KPOD_NAME 8443:8443 & 
 # 	chromium-browser 	https://127.0.0.1:8443/#/login  &
 	sleep 9 
 	kubectl apply -f    $vjp_code_path/Helm/admin-user.yaml
@@ -98,7 +94,7 @@ HHHI() {
 	echo " deploy  panampunna website : settings in  mychart FOLDER   "
 	echo -e "	helm install nginx   $vjp_code_path/Helm/./mychart    --debug --dry-run \n\n  "
 	kubectl create namespace vjp
-	helm install vjp-pod-name    $vjp_code_path/Helm/./mychart  -n vjp   -
+	helm install vjp-pod-name    $vjp_code_path/Helm/./mychart  -n vjp 
 	sleep 20
 	echo "   kubectl  get pods  " 
 	kubectl  get pods	--all-namespaces
@@ -127,6 +123,10 @@ HHHI() {
 	kubectl get  cronjobs --all-namespaces 
 	echo "# kubectl create ingress my-ingress --rule="foo.com/bar=svc1:8080,tls=my-cert"    #######"
 	kubectl create ingress my-ingress --rule="foo.com/bar=svc1:8080,tls=my-cert"
+	echo -e "  kubectl get pods --all-namespaces  \n\n"
+        kubectl         get pods        --all-namespaces
+        kubectl         get service     --all-namespaces
+        kubectl         get deployments --all-namespaces
 
 
 	
