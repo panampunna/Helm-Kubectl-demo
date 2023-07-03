@@ -1,24 +1,5 @@
 ##   cat Helm/helm.bash_aliases >>    ~/.bash_aliases
 
-## helm  helm charts  
-XX() {
-	sudo chmod 666 /var/run/docker.sock	
-	minikube start &	
-}        
-
-XX1() {
-	kubectl get roles,rolebindings,clusterroles,clusterrolebindings --all-namespaces
-        echo -e "\n kubectl get  namespaces   "
-	kubectl get  namespaces
-	echo -e "\n kubectl get  serviceaccounts   "
-	kubectl get  serviceaccounts
-	#################  Role and RoleBinding ################
-	kubectl create role 	pod-reader1  --verb get,list 	--resource pods
-	kubectl create rolebinding pod-reader-binding1 --namespace=default --role=pod-reader1 --serviceaccount=default:admin-user
-	
-}
-
-
 HHHI() {
 	echo "Kubernetes  for Helm : RUN HHHI from folder 2023-ubuntu   "
    	Todayis=$(date +%A)
@@ -128,81 +109,40 @@ HHHI() {
         kubectl         get service     --all-namespaces
         kubectl         get deployments --all-namespaces
 	kubectl 	get namespaces 	--all-namespaces
-#	firefox         	http://127.0.0.1:8080  & 
-       	chromium-browser        https://127.0.0.1:8443/#/login  &
+	chromium-browser          	http://127.0.0.1:8080  & 
+#       	chromium-browser        https://127.0.0.1:8443/#/login  &
  }
 
 
-HHHUser() {
-        echo "##########  kubectl  USERS RBAC  etc    ###############"
-	echo "###	kubectl get serviceaccounts   " 
-                vjp_code_path=$PWD
-	        echo $vjp_code_path
-	echo "### 	kubectl config current-context  " 
-	kubectl config current-context
-	echo  " kubectl get serviceaccounts   "	
-		kubectl get serviceaccounts
-	echo  " kubectl get service   "	
-		kubectl get service
-	echo  " kubectl get clusterrolebindings  "
-		kubectl get clusterrolebindings 
-	echo -e " \n\n ###  kubectl get clusterrolebindings  | grep vjp   ################ \n\n\n  "
-		kubectl get clusterrolebindings  | grep vjp
-	echo  " kubectl get clusterroles  "
-		kubectl get clusterroles
-	echo -e " \n\n ### kubectl      create token admin-user  Admin access  ################ \n\n\n  "
-		kubectl config get-users
-	echo  " kubectl config get-clusters  "
-		kubectl config get-clusters
-	echo  " kubectl config get-contexts  "
-		kubectl config get-contexts
-	echo  " kubectl config current-context  "
-		kubectl config current-context
-	echo  " kubectl get roles  "
-		kubectl get roles
-		kubectl config view
-
-	echo "##########  kubectl  USERS RBAC  etc END    ###############"
-}
-
-
-HHHIK() {
-        echo "##########  HELM  install sudo snap install helm --classic ###############"
-		sudo snap install helm --classic
-	echo " helm  auto fill tab sudo apt-get install bash-completion "
-	echo " sudo helm completion bash | sudo tee  /etc/bash_completion.d/helm > /dev/null    " 
-		sudo apt-get install bash-completion
-		sudo helm completion bash | sudo tee  /etc/bash_completion.d/helm > /dev/null
-	
-		helm  install --help
-	echo "#	Initialize a Helm Chart Repository   " 	
-	echo "#  helm repo add bitnami https://charts.bitnami.com/bitnami   " 
-#	 helm repo add bitnami https://charts.bitnami.com/bitnami
-	echo "# helm search repo bitnami   " 
-#	helm search repo bitnami
-	echo "#    helm repo update   ||  helm  list   ################# " 
-		helm repo update
-#	echo "#   helm install bitnami/mysql --generate-name    ################ "
-#		helm install bitnami/mysql --generate-name
-#	echo "#   helm show all bitnami/mysql ||  THIS will give a big output    ################# "
-#		helm show all bitnami/mysql
-		helm  list
-#		echo -e"\n\n\n   helm uninstall mysql-TAB	  ################# "
-#		helm uninstall mysql-1687790150 
-		helm repo add stable https://charts.helm.sh/stable
-	        helm repo update
-	echo "######   END ############################################ "
-}
-######################################
-
+##########################
 HHHInfo() {
         echo "##########  HELM indo   ###############"
    
 	echo -e  "##  HHHInfo  " 
-	helm repo add jenkins https://charts.jenkins.io
-	helm repo update
-	helm search repo jenkins
-	helm install my-jenkins jenkins/jenkins
-	##"
+	           vjp_code_path=$PWD
+                echo $vjp_code_path
+        echo "###       kubectl config current-context  "
+        kubectl config current-context
+        echo  " kubectl get serviceaccounts   "
+                kubectl get serviceaccounts
+        echo  " kubectl get service   "
+                kubectl get service
+        echo  " kubectl get clusterrolebindings  "
+                kubectl get clusterrolebindings
+        echo -e " \n\n ###  kubectl get clusterrolebindings  | grep vjp   ################ \n\n\n  "
+                kubectl get clusterrolebindings  | grep vjp
+        echo  " kubectl get clusterroles  "
+                kubectl get clusterroles
+        echo -e " \n\n ### kubectl      create token admin-user  Admin access  ################ \n\n\n  "
+                kubectl config get-users
+        echo  " kubectl config get-clusters  "
+                kubectl config get-clusters
+        echo  " kubectl config get-contexts  "
+                kubectl config get-contexts
+        echo  " kubectl config current-context  "
+                kubectl config current-context
+        echo  " kubectl get roles  "
+                kubectl get roles
+		kubectl config view
 }
 
