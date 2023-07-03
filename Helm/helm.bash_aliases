@@ -82,6 +82,8 @@ HHHI() {
 	sleep 9
 	export KPOD_NAME=$(kubectl get pods -n kb -l "app.kubernetes.io/name=kubernetes-dashboard,app.kubernetes.io/instance=kubernetes-dashboard" -o jsonpath="{.items[0].metadata.name}")
 	echo https://127.0.0.1:8443/
+	echo " pod need time to come up =  sleep 20  "
+	sleep 20
 	kubectl -n kb  port-forward $KPOD_NAME 8443:8443 & 
 # 	chromium-browser 	https://127.0.0.1:8443/#/login  &
 	sleep 9 
@@ -98,9 +100,9 @@ HHHI() {
 	sleep 20
 	echo "   kubectl  get pods  " 
 	kubectl  get pods	--all-namespaces
-	 
-	export POD_NAME=$(kubectl get pods -n vjp  -l "app.kubernetes.io/name=mychart,app.kubernetes.io/instance=nginx" -o jsonpath="{.items[0].metadata.name}")
-  	export CONTAINER_PORT=$(kubectl get pod --namespace vjp $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+	
+	export POD_NAME=$(kubectl get pods --namespace vjp -l "app.kubernetes.io/name=mychart,app.kubernetes.io/instance=vjp-pod-name" -o jsonpath="{.items[0].metadata.name}") 
+	export CONTAINER_PORT=$(kubectl get pod --namespace vjp $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
   	echo "Visit http://127.0.0.1:8080 to use your application"
 	sleep 9
 	kubectl -n kb  port-forward $KPOD_NAME 8443:8443 &
