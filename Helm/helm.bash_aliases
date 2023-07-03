@@ -1,17 +1,13 @@
 ##   cat Helm/helm.bash_aliases >>    ~/.bash_aliases
 
 HHHI() {
-	echo "Kubernetes  for Helm : RUN HHHI from folder 2023-ubuntu   "
-   	Todayis=$(date +%A)
-    	lowercase_day=$(echo "$Todayis" | tr '[:upper:]' '[:lower:]')
-    	echo "Current day: $lowercase_day"
+	echo "Kubernetes  for Helm : RUN HHHI from folder  linu-raj "
 
     	folder_name=$(basename "$PWD")
     	echo "Current folder: $folder_name"
 
     if [ "$folder_name" != "linu-raj" ]; then
         echo "Folder you are running the script is wrong"
-#        exit
        echo  "#############    The current folder ##########################  " 
 	 pwd
         return
