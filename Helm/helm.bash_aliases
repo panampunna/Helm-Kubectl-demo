@@ -47,8 +47,9 @@ HHHI() {
 	sudo snap install curl
 	sudo snap install kubectl --classic
         sudo snap install docker
-	echo -e "\n\n  sleep 30  " 
-	sleep 30
+	sudo apt update
+	echo -e "\n\n  sleep 60  " 
+	sleep 60
         sudo chmod 666 /var/run/docker.sock
 	curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
 	echo -e "\n\n ls -l minikube_latest_amd64.deb "
@@ -96,11 +97,8 @@ HHHI() {
 	echo -e "\n\n install kubernetes-dashboard  END \n\n\n\n "
 	echo " deploy  panampunna website : settings in  mychart FOLDER   "
 	echo -e "	helm install nginx   $vjp_code_path/Helm/./mychart    --debug --dry-run \n\n  "
-	Todayis=$(date +%A)
-	echo $Todayis | tr '[:upper:]' '[:lower:]'
-	echo $vjp_code_path
 	kubectl create namespace vjp
-	helm install vjp-pod-name-$lowercase_day    $vjp_code_path/Helm/./mychart  -n vjp   --debug 
+	helm install vjp-pod-name    $vjp_code_path/Helm/./mychart  -n vjp   -
 	sleep 20
 	echo "   kubectl  get pods  " 
 	kubectl  get pods	--all-namespaces
@@ -110,7 +108,7 @@ HHHI() {
   	echo "Visit http://127.0.0.1:8080 to use your application"
 	sleep 9
 	kubectl -n kb  port-forward $KPOD_NAME 8443:8443 &
-  	kubectl --namespace  vjp port-forward $POD_NAME 8080:$CONTAINER_PORT  & 
+  	kubectl --namespace  vjp  port-forward $POD_NAME 8080:$CONTAINER_PORT  & 
 #	firefox    	http://127.0.0.1:8080  & 
 #	chromium-browser        https://127.0.0.1:8443/#/login  &
 	echo -e " \n\n  ##################################"
