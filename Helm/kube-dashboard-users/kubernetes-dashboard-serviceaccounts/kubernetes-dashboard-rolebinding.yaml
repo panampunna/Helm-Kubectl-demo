@@ -1,0 +1,20 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+
+metadata:
+  name: rolebinding-kubernetes-dashboard
+  namespace: 
+  labels:
+    LabelJ: rolebinding-kubernetes-dashboard-label
+    VersionJ: "001"
+  annotations:
+    NameJ: J-annotate-kubernetes-dashboard
+subjects:
+- kind: ServiceAccount
+  name: kubernetes-dashboard
+  namespace:
+roleRef:
+  kind: Role
+  name: role-kubernetes-dashboard-pods,role-kubernetes-dashboard-services,role-kubernetes-dashboard-configmaps,role-kubernetes-dashboard-deployments
+  apiGroup: rbac.authorization.k8s.io
+      

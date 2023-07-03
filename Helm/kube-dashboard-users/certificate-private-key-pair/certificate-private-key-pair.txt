@@ -1,0 +1,74 @@
+
+
+openssl genrsa -out john-user.key 2048
+
+john-user.key is created
+
+#################################
+
+Generate a certificate signing request (CSR) using the private key. Run the following command and provide the requested information:
+
+openssl req -new -key john-user.key -out john-user.csr
+
+john@Ubuntu22:~/Vimal/2023-ubuntu/Helm/kube-dashboard-users/certificate-private-key-pair$ openssl req -new -key john-user.key -out john-user.csr
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:IN
+State or Province Name (full name) [Some-State]:Kerala
+Locality Name (eg, city) []:Kottayam
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:Cow
+Organizational Unit Name (eg, section) []:KL
+Common Name (e.g. server FQDN or YOUR name) []:Panampunna
+Email Address []:perljohn@gmail.com
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:john11
+An optional company name []:Cow
+john@Ubuntu22:~/Vimal/2023-ubuntu/Helm/kube-dashboard-users/certificate-private-key-pair$ ls
+certificate-private-key-pair.txt  john-user.csr  john-user.key
+john@Ubuntu22:~/Vimal/2023-ubuntu/Helm/kube-dashboard-users/certificate-private-key-pair$ 
+
+
+
+##########
+openssl x509 -req -in john-user.csr -signkey john-user.key -out john-user.crt
+
+
+john@Ubuntu22:~/Vimal/2023-ubuntu/Helm/kube-dashboard-users/certificate-private-key-pair$ openssl x509 -req -in john-user.csr -signkey john-user.key -out john-user.crt
+Certificate request self-signature ok
+subject=C = IN, ST = Kerala, L = Kottayam, O = Cow, OU = KL, CN = Panampunna, emailAddress = perljohn@gmail.com
+
+
+john@Ubuntu22:~/Vimal/2023-ubuntu/Helm/kube-dashboard-users/certificate-private-key-pair$ ll
+total 36
+drwxrwxr-x 2 john john  4096 Jun 30 15:38 ./
+drwxrwxr-x 3 john john  4096 Jun 30 15:32 ../
+-rw-rw-r-- 1 john john  1922 Jun 30 15:38 certificate-private-key-pair.txt
+-rw------- 1 john john 12288 Jun 30 15:38 .certificate-private-key-pair.txt.swp
+-rw-rw-r-- 1 john john  1298 Jun 30 15:37 john-user.crt
+-rw-rw-r-- 1 john john  1102 Jun 30 15:36 john-user.csr
+-rw------- 1 john john  1704 Jun 30 15:33 john-user.key
+john@Ubuntu22:~/Vimal/2023-ubuntu/Helm/kube-dashboard-users/certificate-private-key-pair$ 
+
+
+kubectl config set-credentials john-user --client-certificate=<path-to-certificate-file> --client-key=<path-to-private-key-file>
+
+
+john@Ubuntu22:~/Vimal/2023-ubuntu/Helm/kube-dashboard-users/certificate-private-key-pair$ kubectl config set-credentials john-user --client-certificate=john-user.crt --client-key=john-user.key
+User "john-user" set.
+
+kubectl config set-context john-context --cluster=minikube --namespace=elk-namespace --user=john-user
+
+john@Ubuntu22:~/Vimal/2023-ubuntu/Helm/kube-dashboard-users/certificate-private-key-pair$ kubectl config set-context john-context --cluster=minikube --namespace=elk-namespace --user=john-user
+Context "john-context" created.
+john@Ubuntu22:~/Vimal/2023-ubuntu/Helm/kube-dashboard-users/certificate-private-key-pair
+
+kubectl config use-context john-context
+
+ 

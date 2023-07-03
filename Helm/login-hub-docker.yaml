@@ -1,0 +1,20 @@
+image:
+  repository: vimaldevops/panampunna-kerala
+  tag: V1
+  pullSecrets:
+    - name: hub-docker-login
+      data:
+        username: dmltYWxkZXZvcHM=
+        password: ZGNrcl9wYXRfNHFZZnR3TmVUWHRxakctcUJ0eU9aLWRQUWZr
+
+
+### echo -n "vimaldevops" | base64  
+#echo -n "vimaldevops" | base64
+#kubectl create secret docker-registry dockerhub-secret \
+#  --docker-server=https://index.docker.io/v1/ \
+#  --docker-username=vimaldevops \
+#  --docker-password=dckr_pat_4qYftwNeTXtqjG-qBtyOZ-dPQfk \
+#  --docker-email=perljohn@gmail.com \
+#  --dry-run=client -o yaml > secret.yaml
+
+
