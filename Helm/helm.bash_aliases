@@ -114,11 +114,8 @@ HHHI() {
 HHHInfo() {
         echo "##########  HELM indo   ###############"
    
-	echo -e  "##  HHHInfo  " 
-	           vjp_code_path=$PWD
-                echo $vjp_code_path
-        echo "###       kubectl config current-context  "
-        kubectl config current-context
+        echo "  kubectl config current-context  "
+        	kubectl config current-context
         echo  " kubectl get serviceaccounts   "
                 kubectl get serviceaccounts
         echo  " kubectl get service   "
@@ -129,7 +126,7 @@ HHHInfo() {
                 kubectl get clusterrolebindings  | grep vjp
         echo  " kubectl get clusterroles  "
                 kubectl get clusterroles
-        echo -e " \n\n ### kubectl      create token admin-user  Admin access  ################ \n\n\n  "
+        echo -e "  kubectl config get-users  ## \n\n\n  "
                 kubectl config get-users
         echo  " kubectl config get-clusters  "
                 kubectl config get-clusters
