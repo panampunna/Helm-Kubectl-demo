@@ -43,17 +43,18 @@ HHHI() {
 	sudo apt update
     	echo "1.2 SNAP = "snap install kubectl --classic" |## |  "kubectl version --client"  ###   "
 #	sudo snap install firefox
-#	sudo snap install chromium
+	sudo snap install chromium
 	sudo snap install curl
 	sudo snap install kubectl --classic
         sudo snap install docker
 	sudo apt update
-	echo -e "\n\n  sleep 60  " 
-	sleep 60
         sudo chmod 666 /var/run/docker.sock
 	curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
 	echo -e "\n\n ls -l minikube_latest_amd64.deb "
 	ls -l minikube_latest_amd64.deb
+	echo -e "\n\n  sleep 60  "
+        sleep 60
+
 	sudo dpkg -i minikube_latest_amd64.deb
 	echo -e "\n\n sudo minikube start "
 	minikube start 
@@ -85,7 +86,6 @@ HHHI() {
 	echo " pod need time to come up =  sleep 20  "
 	sleep 20
 	kubectl -n kb  port-forward $KPOD_NAME 8443:8443 & 
-# 	chromium-browser 	https://127.0.0.1:8443/#/login  &
 	sleep 9 
 	kubectl apply -f    $vjp_code_path/Helm/admin-user.yaml
 	echo -e "\n     kubectl create serviceaccount -n kubernetes-dashboard admin-user "
@@ -107,10 +107,8 @@ HHHI() {
 	sleep 9
 	kubectl -n kb  port-forward $KPOD_NAME 8443:8443 &
   	kubectl --namespace  vjp  port-forward $POD_NAME 8080:$CONTAINER_PORT  & 
-#	firefox    	http://127.0.0.1:8080  & 
-#	chromium-browser        https://127.0.0.1:8443/#/login  &
-	echo -e " \n\n  ##################################"
-	echo  "  #### this will create a pod with nginc image in default namespace with name www  ==  kubectl  run www --image nginx   "
+	
+	echo -e "##################################  \n\n "
 	echo  "  ####  kubectl create  job a-job --image nginx  " 
 	kubectl create  job a-job --image nginx
 	echo  "#####   kubectl get  jobs --all-namespaces -o wide  ###########"
@@ -129,18 +127,9 @@ HHHI() {
         kubectl         get pods        --all-namespaces
         kubectl         get service     --all-namespaces
         kubectl         get deployments --all-namespaces
-
-
-	
-#	kubectl create namespace grafana-namespace
-#	kubectl create namespace elk-namespace
-#	kubectl create namespace john-namespace
-	kubectl get namespaces --all-namespaces
-		#helm install grafana grafana/grafana  -n grafana-namespace
-		# helm install elasticsearch elastic/elasticsearch -n elk-namespace
-		# helm install logstash elastic/logstash  -n elk-namespace
-		# helm install kibana elastic/kibana     -n elk-namespace
-		# helm install nginx ./mychart/ --debug --dry-run 
+	kubectl 	get namespaces 	--all-namespaces
+#	firefox         	http://127.0.0.1:8080  & 
+       	chromium-browser        https://127.0.0.1:8443/#/login  &
  }
 
 
@@ -162,19 +151,6 @@ HHHUser() {
 	echo  " kubectl get clusterroles  "
 		kubectl get clusterroles
 	echo -e " \n\n ### kubectl      create token admin-user  Admin access  ################ \n\n\n  "
-		kubectl      create token admin-user
-#	echo  " kubectl create serviceaccounts vjp  "
-#		kubectl create serviceaccounts vjp
-#	echo  " kubectl describe serviceaccounts vjp  "
-#		 kubectl describe serviceaccounts vjp
-
-	#	kubectl create serviceaccount -n default vjp
-	#	kubectl apply -f    $vjp_code_path/Helm/kube-dashboard-users/vjp-user.yaml
-#	echo  " kubectl -n default     create token vjp  "
-#		kubectl -n default     create token vjp
-#		kubectl config --kubeconfig=$vjp_code_path/Helm/config-exercise/config-demo    view		
-#		kubectl config  --kubeconfig=/home/john/.kube/config  view  
-	echo  " kubectl config get-users  "
 		kubectl config get-users
 	echo  " kubectl config get-clusters  "
 		kubectl config get-clusters
@@ -184,20 +160,10 @@ HHHUser() {
 		kubectl config current-context
 	echo  " kubectl get roles  "
 		kubectl get roles
-	echo  " kubectl create role john-role --verb=get,list --resource=pods,services  "
-#		kubectl create role john-role --verb=get,list --resource=pods,services
-	echo  " kubectl describe roles  john-role  "
-#		kubectl describe roles  john-role
-#		kubectl edit  role john-role
 		kubectl config view
 
 	echo "##########  kubectl  USERS RBAC  etc END    ###############"
 }
-# https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/
-# kubectl config --kubeconfig=config-demo set-cluster development --server=https://1.2.3.4 --certificate-authority=fake-ca-file
-# kubectl config --kubeconfig=config-demo set-cluster test --server=https://5.6.7.8 --insecure-skip-tls-verify
-#
-#
 
 
 HHHIK() {
