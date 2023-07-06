@@ -1,4 +1,4 @@
-# Hi  Linu-raj
+# Hi  All 
 
 Thanks you for motivating me. 
 i covers 5% of kubernetes and Helm
