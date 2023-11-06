@@ -5,7 +5,7 @@
 
 # v2 format
 apiVersion: v2
-applicationName: app-xy
+applicationName: Helm
 previewConfig:
   host: ${PREVIEW_NAMESPACE}.example.tld
   target:
@@ -14,7 +14,7 @@ previewConfig:
     namespace: ${APPLICATION_NAME}-${PREVIEW_ID_HASH}-preview
   replace:
     Chart.yaml:
-      - path: name
+      - path: mychart
         value: ${PREVIEW_NAMESPACE}
     values.yaml:
       - path: image.tag
