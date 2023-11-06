@@ -8,7 +8,7 @@ image:
   repository: vimaldevops/panampunna-kerala
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "V22"
+  tag: "V23"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -71,7 +71,7 @@ resources: {}
 autoscaling:
   enabled: true
   minReplicas: 1
-  maxReplicas: 4
+  maxReplicas: e7f6c011
   targetCPUUtilizationPercentage: 20
   # targetMemoryUtilizationPercentage: 80
 
