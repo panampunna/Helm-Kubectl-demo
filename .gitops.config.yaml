@@ -1,0 +1,23 @@
+#### What is in this 
+# https://baloise.github.io/gitopscli/commands/create-preview/
+
+
+
+# v2 format
+apiVersion: v2
+applicationName: app-xy
+previewConfig:
+  host: ${PREVIEW_NAMESPACE}.example.tld
+  target:
+    organisation: panampunna
+    repository: Helm-Kubectl-demo
+    namespace: ${APPLICATION_NAME}-${PREVIEW_ID_HASH}-preview
+  replace:
+    Chart.yaml:
+      - path: name
+        value: ${PREVIEW_NAMESPACE}
+    values.yaml:
+      - path: image.tag
+        value: ${GIT_HASH}
+      - path: route.host
+        value: ${PREVIEW_HOST}
