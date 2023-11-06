@@ -22,4 +22,4 @@ previewConfig:
       - path: image.tag
         value: ${GIT_HASH}
       - path: autoscaling.maxReplicas
-        value: ${PREVIEW_ID_HASH}
+        value: ${PREVIEW_ID}
