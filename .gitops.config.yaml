@@ -20,4 +20,4 @@ previewConfig:
       - path: image.tag
         value: ${GIT_HASH}
       - path: autoscaling.maxReplicas
-        value: 4
+        value: ${maxReplicas}
