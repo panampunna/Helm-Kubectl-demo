@@ -71,7 +71,7 @@ resources: {}
 autoscaling:
   enabled: true
   minReplicas: 1
-  maxReplicas: ${preview-id}
+  maxReplicas: 4
   targetCPUUtilizationPercentage: 20
   # targetMemoryUtilizationPercentage: 80
 
