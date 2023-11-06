@@ -8,7 +8,7 @@ image:
   repository: vimaldevops/panampunna-kerala
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "V3"
+  tag: "V20"
 
 imagePullSecrets: []
 nameOverride: ""
