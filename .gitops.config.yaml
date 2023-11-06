@@ -19,5 +19,5 @@ previewConfig:
     values.yaml:
       - path: image.tag
         value: ${GIT_HASH}
-      - path: route.host
-        value: ${PREVIEW_HOST}
+      - path: autoscaling.maxReplicas
+        value: 4
