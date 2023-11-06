@@ -16,6 +16,8 @@ previewConfig:
     Chart.yaml:
       - path: name
         value: ${PREVIEW_NAMESPACE}
+      - path: version
+        value: 2023.11.${GIT_HASH}    
     values.yaml:
       - path: image.tag
         value: ${GIT_HASH}

@@ -1,0 +1,17 @@
+
+awscliv2.zip
+aws-sam-cli-linux-x86_64.zip
+terraform.tfstate.backup
+terraform_1.5.4_linux_amd64.zip.1
+terraform_1.5.4_linux_amd64.zip
+.terraform.lock.hcl
+.terraform/
+terraform.tfstate
+.swp
+*.tgz
+argocd-linux-amd64
+minikube_latest_amd64.deb
+flux_0.20.1_linux_amd64.tar.gz
+*.tar.gz
+flux_2.1.2_linux_amd64.tar.gz
+
