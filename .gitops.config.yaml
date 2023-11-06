@@ -5,7 +5,7 @@
 
 # v2 format
 apiVersion: v2
-applicationName: Helm
+applicationName: mychart
 previewConfig:
   host: ${PREVIEW_NAMESPACE}.example.tld
   target:
