@@ -8,7 +8,7 @@ image:
   repository: vimaldevops/flask_app
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "UI-12-11-19--bath1"
+  tag: "UI-12-11-20--homefood"
 
 imagePullSecrets: []
 nameOverride: ""
