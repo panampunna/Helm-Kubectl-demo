@@ -87,3 +87,14 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+
+PostgreSQL:
+  enabled: true
+  postgresqlUsername: john_k
+  postgresqlPassword: mysql_k
+  postgresqlDatabase: johndb_k
+  service:
+    port: 5432
+
+    

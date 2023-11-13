@@ -34,17 +34,18 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - name: http
-              containerPort: 80
-              protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
+            - name: 
+              containerPort: {{ .Values.Deployment.containerPort }}
+              env:
+              - name: POSTGRES_DB
+                value:  {{ .Values.PostgreSQL.postgresqlDatabase }} #  "johndb_k"  # Replace with your desired database name
+              - name: POSTGRES_USER
+                value: {{ .Values.PostgreSQL.postgresqlUsername }}  # "john_k"  # Replace with your desired PostgreSQL username
+              - name: POSTGRES_PASSWORD
+                value: {{ .Values.PostgreSQL.postgresqlPassword }}  # "mysql_k"   # Replace with your desired PostgreSQL password
+              
+
+
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
@@ -59,3 +60,6 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+
+--- 
+
