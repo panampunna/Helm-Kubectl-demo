@@ -8,8 +8,8 @@ image:
   repository: vimaldevops/flask_app
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "DB-25-04-09--jcb"
-
+  tag: "DB-31-05-14--May31"
+  ## "DB-25-04-09--jcb" 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
