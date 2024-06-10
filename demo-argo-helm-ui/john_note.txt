@@ -1,0 +1,4 @@
+
+
+/Vimal/2023-ubuntu/argo/Demo_argo-cd/UI-db-docker-images_2023/SHELL-Files$ ./1_Create_Docker_Image-Push.sh  June10
+
